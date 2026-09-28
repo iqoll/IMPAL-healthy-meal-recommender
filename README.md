@@ -7,7 +7,7 @@ Proyek ini dibuat untuk memenuhi **Tugas Mata Kuliah IMPLEMENTASI DAN PENGUJIAN 
 | NIM | Nama | Role | GitHub |
 | :---: | :--- | :--- | :--- |
 | `103042400013` | Muhammad Haiqal | -- | [@iqoll](https://github.com/iqoll) |
-| `103042310118` | Christine Mako | -- | [@username2](https://github.com/username2) |
+| `103042310118` | Christine Mako | -- | [@christinemako](https://github.com/christinemako) |
 | `103042310017` | Yuri Mahdi Prasetya | -- | [@yuri114](https://github.com/yuri114) |
 | `1304221036` | Muhammad Fathan Yusrizal | -- | [@killerbawang](https://github.com/killerbawang) |
 | `103042400058` | Siti Robiah | -- | [@sitirobiah](https://github.com/sitirobiah) |
