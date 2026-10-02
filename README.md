@@ -14,5 +14,5 @@ Proyek ini dibuat untuk memenuhi **Tugas Mata Kuliah IMPLEMENTASI DAN PENGUJIAN 
 
 ## 📁 Dokumentasi Proyek
 Dokumen perancangan dan pengujian sistem dapat diakses pada folder berikut:
-- [Dokumen SKPL (SRS)](./week-2/SKPL.pdf)
-- [Dokumen DPPL](./week-2/DPPL.pdf)
+- [Dokumen SKPL (SRS)](./docs/week-2/SKPL.pdf)
+- [Dokumen DPPL](./docs/week-2/DPPL.pdf)
