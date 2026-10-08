@@ -77,6 +77,20 @@ npx expo start
 
 Pindai kode QR menggunakan aplikasi Expo Go (Android) atau aplikasi Kamera (iOS) untuk menjalankannya di perangkat Anda.
 
+### Menajalankan Backend (Server API)
+```bash
+# Buka terminal baru dan masuk ke folder server
+cd server
+
+# Install dependensi backend (jika belum terinstall)
+npm install
+
+# Menjalankan server dalam mode development
+npm run dev
+
+# Atau menjalankan langsung
+node server.js
+```
 ## License
 
 MIT
