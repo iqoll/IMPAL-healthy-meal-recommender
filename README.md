@@ -72,6 +72,7 @@ npm install
 ### Menjalankan Aplikasi
 
 ```bash
+cd client
 npx expo start
 ```
 
