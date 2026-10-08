@@ -1,22 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { globalStyles } from '@/styles/global';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.title}>NutriAI</Text>
+      <Text style={styles.date}>Thursday, October 08</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  date: {
+    fontSize: 14,
+    color: '#a0a0b0',
+    marginTop: 4,
+    marginBottom: 30,
   },
 });
-

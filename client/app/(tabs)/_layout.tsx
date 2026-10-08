@@ -4,12 +4,12 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'NutriAI',
         }}
       />
     </Tabs>
