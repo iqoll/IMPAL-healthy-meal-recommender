@@ -1,7 +1,6 @@
 
 import { View, Text, StyleSheet } from 'react-native';
 import { colors } from '@/styles/global';
-import Badge from '@/shared/Badge';
 
 interface GreetingSectionProps {
   dateText?: string;
@@ -20,19 +19,10 @@ export default function GreetingSection({
 }: GreetingSectionProps) {
   return (
     <View style={styles.container}>
-      {/* Menggunakan Shared Badge dengan dot hijau */}
-      <Badge 
-        label={dateText}
-        backgroundColor="#DCFCE7"
-        textColor={colors.primary}
-        borderColor="#BBF7D0"
-        dotColor="#16A34A"
-      />
-
       {/* Teks Sapaan */}
       <Text style={styles.greetingTitle}>
-        Hello, {'\n'}
-        <Text style={styles.nameText}>{userName}!</Text>
+        Hello, <Text style={styles.nameText}>{userName}!</Text> {'\n'}
+        <Text style={styles.quotes}>Let's make your diet count</Text>
       </Text>
     </View>
   );
@@ -43,13 +33,19 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   greetingTitle: {
+    fontFamily: 'Jakarta-Regular',
     fontSize: 28,
-    fontWeight: '700',
+    fontWeight: '400',
     color: colors.text,
     lineHeight: 36,
     marginTop: 12,
   },
   nameText: {
+    color: colors.text,
+  },
+  quotes: {
+    fontSize: 16,
+    fontWeight: '600',
     color: colors.text,
   },
 });

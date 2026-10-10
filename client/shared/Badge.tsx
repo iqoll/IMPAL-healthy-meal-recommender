@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { colors } from '@/styles/global';
 
 interface BadgeProps {
   label: string;
@@ -16,9 +17,9 @@ interface BadgeProps {
 
 export default function Badge({
   label,
-  backgroundColor = '#DCFCE7', // Default: soft mint green
-  textColor = '#166534',       // Default: dark green text
-  borderColor = '#BBF7D0',
+  backgroundColor = colors.primary, // Default: soft mint green
+  textColor = colors.text,       // Default: dark green text
+  borderColor = colors.border,
   dotColor,
   iconName,
   iconSize = 14,
