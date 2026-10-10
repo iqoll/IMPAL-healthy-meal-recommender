@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { useRouter } from 'expo-router';
 import { globalStyles } from '@/styles/global';
 import MainHeader from '@/shared/MainHeader';
+import GreetingSection from '@/components/GreetingSection';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function HomeScreen() {
         onProfilePress={goToLogin} // Perlu diganti nanti ke Profile
         onNotificationPress={goToLogin} // Perlu diganti nanti ke Notifications
       />
+      <GreetingSection userName='Muhammad Haiqal'/>
     </View>
   );
 }
