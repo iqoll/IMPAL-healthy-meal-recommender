@@ -9,10 +9,33 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'NutriAI',
+          title: 'Home',
+        }}
+      />
+      <Tabs.Screen
+        name="calendar"
+        options={{
+          title: 'Calendar',
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Chat',
+        }}
+      />
+      <Tabs.Screen
+        name="meals"
+        options={{
+          title: 'Meals',
+        }}
+      />
+      <Tabs.Screen
+        name="health"
+        options={{
+          title: 'Health',
         }}
       />
     </Tabs>
   );
 }
-
