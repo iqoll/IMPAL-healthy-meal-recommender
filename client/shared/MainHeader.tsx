@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@/styles/global';
+import MASEH from '@/assets/images/MASEH.png';
 
 interface MainHeaderProps {
   onProfilePress?: () => void;
@@ -28,10 +28,11 @@ export default function MainHeader({
 
       {/* Logo & Nama Aplikasi di Tengah */}
       <View style={styles.logoContainer}>
-        <View style={styles.logoBadge}>
-          <Ionicons name="sparkles" size={14} color="#FFFFFF" />
-        </View>
-        <Text style={styles.logoText}>NutriAI</Text>
+        <Image 
+          source={MASEH} 
+          style={styles.logo} 
+          resizeMode="contain" 
+        />
       </View>
 
       {/* Tombol Notifikasi di Kanan */}
@@ -71,22 +72,11 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   logoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  logoBadge: {
-    width: 28,
-    height: 28,
-    borderRadius: 8,
-    backgroundColor: '#059669', // Warna hijau ikon NutriAI
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#0F172A',
-    letterSpacing: -0.5,
+  logo: {
+    width: 140,
+    height: 32,
   },
 });

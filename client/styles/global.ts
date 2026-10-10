@@ -1,17 +1,18 @@
+// styles/global.ts
 import { StyleSheet } from 'react-native';
 
-// Diperbarui berdasarkan token warna dan desain NutriAI Health
+// Diperbarui berdasarkan token warna dan desain Warm Kinetic Health
 export const colors = {
-  background: '#F8FAF6',      // Background porcelain hangat
-  header: '#FFFFFF',          // Permukaan putih bersih[cite: 4]
-  surface: '#FFFFFF',         // Card surface white[cite: 4]
-  primary: '#006b2c',         // Fresh botanical green (Primary brand)[cite: 4]
-  secondary: '#F97316',       // Sunset tangerine (Secondary accent)[cite: 4]
-  tertiary: '#0EA5E9',        // Clear marine blue (Hydration/Tertiary)[cite: 4]
-  text: '#131b2e',            // Deep slate charcoal (On-background)[cite: 4]
-  textSecondary: '#64748B',   // Slate grey untuk teks sekunder[cite: 4]
-  alert: '#ba1a1a',           // Error / alert red[cite: 4]
-  border: '#E2E8F0',          // Hairline surface border[cite: 4]
+  background: '#fbfaf2',      // Canvas root: warm ivory background
+  header: '#ffffff',          // Pure surface white untuk card/header
+  surface: '#ffffff',         // Surface container lowest / card surface
+  primary: '#FF6418',         // Primary Brand Accent: energetic citrus orange[cite: 7]
+  secondary: '#fed01b',       // Secondary container: yellow gold glow[cite: 7]
+  tertiary: '#575e70',        // Tertiary accent color[cite: 7]
+  text: '#1b1c18',            // On-background deep charcoal text[cite: 7]
+  textSecondary: '#5a4137',   // On-surface-variant untuk teks sekunder[cite: 7]
+  alert: '#ba1a1a',           // Error / alert red[cite: 7]
+  border: '#e3e3db',          // Surface variant / border line[cite: 7]
 };
 
 export const globalStyles = StyleSheet.create({
@@ -19,19 +20,21 @@ export const globalStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     paddingTop: 0,
-    paddingHorizontal: 16,     // Mengikuti standard screen margin compact viewport (16px)[cite: 4]
+    paddingHorizontal: 20,    // Mengikuti standard margin-mobile (20px)[cite: 7]
   },
   title: {
-    fontSize: 28,
-    fontWeight: '700',         // Sesuai token display-lg-mobile[cite: 4]
+    fontSize: 36,
+    fontWeight: '900',        // Sesuai token display-hero-mobile[cite: 7]
     color: colors.text,
+    letterSpacing: -0.03,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',         // Sesuai token title-md[cite: 4]
-    color: colors.text,
-    marginTop: 30,
-    marginBottom: 16,
+    fontSize: 14,
+    fontWeight: '700',        // Sesuai token label-md dengan tracking uppercase[cite: 7]
+    color: colors.textSecondary,
+    marginTop: 24,
+    marginBottom: 12,
+    letterSpacing: 0.04,
   },
   empty: {
     color: colors.textSecondary,
