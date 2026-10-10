@@ -1,4 +1,7 @@
 import { Tabs } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import CustomTabBarButton from '@/components/CustomTabButton';
+
 
 export default function TabLayout() {
   return (
@@ -21,7 +24,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="chat"
         options={{
-          title: 'Chat',
+          title: '',
+          tabBarButton: (props) => <CustomTabBarButton {...props} /> 
         }}
       />
       <Tabs.Screen
