@@ -18,7 +18,7 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    paddingTop: 60,
+    paddingTop: 0,
     paddingHorizontal: 16,     // Mengikuti standard screen margin compact viewport (16px)[cite: 4]
   },
   title: {

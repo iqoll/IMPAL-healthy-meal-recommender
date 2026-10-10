@@ -1,7 +1,8 @@
-// components/MainHeader.tsx
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { colors } from '@/styles/global';
 
 interface MainHeaderProps {
   onProfilePress?: () => void;
@@ -12,8 +13,10 @@ export default function MainHeader({
   onProfilePress,
   onNotificationPress,
 }: MainHeaderProps) {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: Math.max(insets.top, 16) + 8 }]}>
       {/* Tombol Profil di Kiri */}
       <TouchableOpacity 
         onPress={onProfilePress} 
@@ -49,7 +52,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    paddingVertical: 12,
+    paddingBottom: 12,
+    backgroundColor: colors.background,
   },
   iconButton: {
     width: 44,

@@ -1,32 +1,41 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { globalStyles } from '@/styles/global';
-import MainHeader from '@/shared/MainHeader';
 import GreetingSection from '@/components/GreetingSection';
+import IngredientsCard from '@/components/IngredientsCard';
+import WeightTrackerCard from '@/components/WeightTrackerCard';
 
 export default function HomeScreen() {
   const router = useRouter();
 
- const goToLogin = () => {
-  router.push('/login');
- }
-
   return (
-    <View style={globalStyles.container}>
-      <MainHeader 
-        onProfilePress={goToLogin} // Perlu diganti nanti ke Profile
-        onNotificationPress={goToLogin} // Perlu diganti nanti ke Notifications
-      />
+    <ScrollView 
+      style={globalStyles.container}
+      contentContainerStyle={styles.scrollContent}
+      showsVerticalScrollIndicator={false}
+    >
       <GreetingSection userName='Muhammad Haiqal'/>
-    </View>
+      
+      <View style={styles.quickActionContainer}>
+        <IngredientsCard 
+          onPress={() => router.push('/login')} // nanti diganti ke 
+          onQuickLogPress={() => router.push('/login')}
+        />
+        <WeightTrackerCard
+          onPress={() => router.push('/login')} // nanti diganti ke 
+        />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  date: {
-    fontSize: 14,
-    color: '#a0a0b0',
-    marginTop: 4,
-    marginBottom: 30,
+  scrollContent: {
+    paddingBottom: 32,
+  },
+  quickActionContainer: {
+    flexDirection: 'row',
+    gap: 12,           // Memberikan jarak antar kedua kartu
+    marginVertical: 12,
   },
 });
