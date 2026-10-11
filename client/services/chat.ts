@@ -1,4 +1,3 @@
-// services/chat.ts
 // Sementara masih dummy. Nanti ganti isi sendChatMessage dengan request ke server (OpenRouter via backend).
 import { ChatMessage } from '@/types/chat';
 

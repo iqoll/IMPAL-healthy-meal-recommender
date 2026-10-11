@@ -1,4 +1,3 @@
-// components/chat/MessageBubble.tsx
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, fonts } from '@/styles/global';

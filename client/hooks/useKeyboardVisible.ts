@@ -1,4 +1,3 @@
-// hooks/useKeyboardVisible.ts
 import { useEffect, useState } from 'react';
 import { Keyboard, Platform } from 'react-native';
 
