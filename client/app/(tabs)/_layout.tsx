@@ -26,8 +26,10 @@ export default function TabLayout() {
         tabBarStyle: {
           position: 'absolute',
           bottom: getTabBarBottom(insets.bottom), // Di atas home indicator / tombol navigasi Android
-          left: TAB_BAR_SIDE_MARGIN,
-          right: TAB_BAR_SIDE_MARGIN,
+          // Pakai start/end, bukan left/right: style bawaan React Navigation memakai start: 0 & end: 0,
+          // dan di native start/end mengalahkan left/right sehingga bar menempel ke tepi layar
+          start: TAB_BAR_SIDE_MARGIN,
+          end: TAB_BAR_SIDE_MARGIN,
           backgroundColor: '#0A130F',
           borderRadius: 20,
           height: TAB_BAR_HEIGHT,
@@ -35,6 +37,7 @@ export default function TabLayout() {
           paddingTop: 8,
           paddingBottom: 8, // Wajib eksplisit: React Navigation menambah paddingBottom = safe area, ikon jadi terdesak di iPhone
           borderTopWidth: 0,
+          elevation: 0, // Matikan elevation bawaan (8) agar di Android hanya boxShadow yang tampil
           ...shadows.tabBar,
         },
         tabBarActiveTintColor: '#FFFFFF',
