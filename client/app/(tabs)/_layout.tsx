@@ -1,11 +1,15 @@
 // app/(tabs)/_layout.tsx
 import { Tabs, useRouter } from 'expo-router';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CustomTabBarButton from '@/components/CustomTabButton';
 import MainHeader from '@/shared/MainHeader';
+import { fonts, shadows } from '@/styles/global';
+import { TAB_BAR_HEIGHT, TAB_BAR_SIDE_MARGIN, getTabBarBottom } from '@/constants/layout';
 
 export default function TabLayout() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   return (
     <Tabs
@@ -21,27 +25,25 @@ export default function TabLayout() {
         // Styling Bilah Navigasi Bawah (Floating Dock) sesuai spesifikasi Figma
         tabBarStyle: {
           position: 'absolute',
-          bottom: 35,
-          left: 20,
-          right: 20,
+          bottom: getTabBarBottom(insets.bottom), // Di atas home indicator / tombol navigasi Android
+          left: TAB_BAR_SIDE_MARGIN,
+          right: TAB_BAR_SIDE_MARGIN,
           backgroundColor: '#0A130F',
           borderRadius: 20,
-          height: 75,
+          height: TAB_BAR_HEIGHT,
           paddingHorizontal: 8,
-          paddingVertical: 8,
+          paddingTop: 8,
+          paddingBottom: 8, // Wajib eksplisit: React Navigation menambah paddingBottom = safe area, ikon jadi terdesak di iPhone
           borderTopWidth: 0,
-          elevation: 10,
-          shadowColor: '#086317',
-          shadowOffset: { width: 0, height: 10 },
-          shadowOpacity: 0.2,
-          shadowRadius: 15,
+          ...shadows.tabBar,
         },
         tabBarActiveTintColor: '#FFFFFF',
         tabBarInactiveTintColor: '#9CA3AF',
         tabBarLabelStyle: {
           fontSize: 11,
-          fontWeight: '600',
+          fontFamily: fonts.semiBold,
         },
+        tabBarAllowFontScaling: false, // Ukuran tab bar tetap, label tidak ikut membesar
       }}>
       
       {/* 1. Home */}

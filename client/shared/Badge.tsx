@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
+import { View, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '@/styles/global';
+import { Text } from '@/shared/AppText';
+import { colors, fonts } from '@/styles/global';
 
 interface BadgeProps {
   label: string;
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 12,
-    fontWeight: '600',
+    fontFamily: fonts.semiBold,
     letterSpacing: 0.5,
   },
 });

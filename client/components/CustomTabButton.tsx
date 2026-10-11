@@ -1,7 +1,9 @@
 // components/CustomTabBarButton.tsx
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, GestureResponderEvent } from 'react-native';
+import { TouchableOpacity, StyleSheet, GestureResponderEvent } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Text } from '@/shared/AppText';
+import { fonts } from '@/styles/global';
 
 interface CustomTabBarButtonProps {
   onPress?: (e: GestureResponderEvent) => void;
@@ -17,7 +19,8 @@ export default function CustomTabBarButton({ onPress }: CustomTabBarButtonProps)
     >
       {/* Ikon Sparkle Kuning khas AI */}
       <Ionicons name="sparkles" size={22} color="#FFC800" />
-      <Text style={styles.label}>MASEHAI</Text>
+      {/* Sama seperti label tab lain: tidak ikut membesar agar tab bar tetap rapi */}
+      <Text style={styles.label} allowFontScaling={false}>MASEHAI</Text>
     </TouchableOpacity>
   );
 }
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 11,
-    fontWeight: '600',
+    fontFamily: fonts.semiBold,
     color: '#FFFFFF',
     marginTop: 3,
   },

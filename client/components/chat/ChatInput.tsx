@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { TextInput } from '@/shared/AppText';
 import { Ionicons } from '@expo/vector-icons';
-import { colors, fonts } from '@/styles/global';
+import { colors, fonts, shadows } from '@/styles/global';
 
 interface ChatInputProps {
   onSend: (text: string) => void;
@@ -58,11 +59,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 8,
     paddingVertical: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.12,
-    shadowRadius: 12,
-    elevation: 6,
+    ...shadows.lg,
   },
   micButton: {
     marginRight: 12,

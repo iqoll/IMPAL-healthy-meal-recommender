@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text } from '@/shared/AppText';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, fonts } from '@/styles/global';
 import { RecipeRecommendation } from '@/types/chat';

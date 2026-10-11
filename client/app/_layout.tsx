@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import {
   useFonts,
   PlusJakartaSans_400Regular,
+  PlusJakartaSans_500Medium,
   PlusJakartaSans_600SemiBold,
   PlusJakartaSans_700Bold,
   PlusJakartaSans_800ExtraBold,
@@ -17,6 +19,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     'Jakarta-Regular': PlusJakartaSans_400Regular,
+    'Jakarta-Medium': PlusJakartaSans_500Medium,
     'Jakarta-SemiBold': PlusJakartaSans_600SemiBold,
     'Jakarta-Bold': PlusJakartaSans_700Bold,
     'Jakarta-ExtraBold': PlusJakartaSans_800ExtraBold,
@@ -39,9 +42,13 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-    </Stack>
+    <>
+      {/* Ikon status bar selalu gelap karena latar aplikasi terang (juga saat HP dalam dark mode) */}
+      <StatusBar style="dark" />
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      </Stack>
+    </>
   );
 }

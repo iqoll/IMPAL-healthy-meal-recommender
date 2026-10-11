@@ -1,4 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text } from '@/shared/AppText';
+import { shadows } from '@/styles/global';
 
 interface LoginFooterProps {
   onLoginPress: () => void;
@@ -38,11 +40,7 @@ const styles = StyleSheet.create({
     height: 56,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 4,
+    ...shadows.md,
     marginBottom: 20,
   },
   loginButtonText: {

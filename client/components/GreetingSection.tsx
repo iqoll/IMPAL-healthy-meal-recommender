@@ -1,6 +1,7 @@
 
-import { View, Text, StyleSheet } from 'react-native';
-import { colors } from '@/styles/global';
+import { View, StyleSheet } from 'react-native';
+import { Text } from '@/shared/AppText';
+import { colors, fonts } from '@/styles/global';
 
 interface GreetingSectionProps {
   dateText?: string;
@@ -33,9 +34,8 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   greetingTitle: {
-    fontFamily: 'Jakarta-Regular',
+    fontFamily: fonts.regular,
     fontSize: 28,
-    fontWeight: '400',
     color: colors.text,
     lineHeight: 36,
     marginTop: 12,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   quotes: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: fonts.semiBold,
     color: colors.text,
   },
 });

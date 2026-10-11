@@ -1,7 +1,7 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors } from '@/styles/global';
+import { colors, shadows } from '@/styles/global';
 import MASEH from '@/assets/images/MASEH.png';
 
 interface MainHeaderProps {
@@ -65,11 +65,7 @@ const styles = StyleSheet.create({
     borderColor: '#E2E8F0',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
+    ...shadows.sm,
   },
   logoContainer: {
     alignItems: 'center',

@@ -1,4 +1,5 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TextInput } from '@/shared/AppText';
 import { Ionicons } from '@expo/vector-icons';
 
 interface LoginFormProps {

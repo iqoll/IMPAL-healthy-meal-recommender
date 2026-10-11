@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from '@/shared/AppText';
+import { fonts, shadows } from '@/styles/global';
 
 export default function MyTargetCard() {
   return (
@@ -91,24 +93,20 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: fonts.bold,
     color: '#111111',
     letterSpacing: 0.5,
   },
   headerDate: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: fonts.semiBold,
     color: '#FF7A00',
   },
   card: {
     backgroundColor: '#FF7A00', // Warna latar belakang oranye sesuai gambar
     borderRadius: 24,
     padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 8,
-    elevation: 5,
+    ...shadows.md,
   },
   calorieSection: {
     flexDirection: 'row',
@@ -118,17 +116,17 @@ const styles = StyleSheet.create({
   },
   calorieLabel: {
     fontSize: 20,
-    fontWeight: '600',
+    fontFamily: fonts.semiBold,
     color: '#FFFFFF',
   },
   calorieValue: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontFamily: fonts.bold,
     color: '#FFFFFF',
   },
   calorieTotal: {
     fontSize: 14,
-    fontWeight: 'normal',
+    fontFamily: fonts.regular,
     color: '#FFD1A9',
   },
   progressBarContainer: {
@@ -170,17 +168,17 @@ const styles = StyleSheet.create({
   nutritionLabel: {
     fontSize: 14,
     color: '#FFFFFF',
-    fontWeight: '500',
+    fontFamily: fonts.medium,
   },
   nutritionValue: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: fonts.bold,
     color: '#FFFFFF',
     marginBottom: 8,
   },
   nutritionTotal: {
     fontSize: 11,
-    fontWeight: 'normal',
+    fontFamily: fonts.regular,
     color: '#FFD1A9',
   },
   miniBarContainer: {

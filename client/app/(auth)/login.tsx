@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import {
   KeyboardAvoidingView,
-  Platform,
   ScrollView,
   StyleSheet,
 } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@/styles/global';
 import LoginHeader from '@/components/LoginHeader';
 import LoginForm from '@/components/LoginForm';
@@ -14,6 +14,7 @@ import LoginFooter from '@/components/LoginFooter';
 
 export default function LoginScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -24,13 +25,16 @@ export default function LoginScreen() {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
+    // 'padding' di kedua platform, sama seperti layar chat (Android edge-to-edge)
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
       <ScrollView
-        contentContainerStyle={styles.scrollContainer}
+        contentContainerStyle={[
+          styles.scrollContainer,
+          // Jarak atas/bawah menyesuaikan notch, dynamic island, dan navigasi bawah tiap device
+          { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24 },
+        ]}
         showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
       >
         <LoginHeader />
         
@@ -61,8 +65,6 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
     paddingHorizontal: 24,
-    paddingTop: 60,
-    paddingBottom: 40,
     justifyContent: 'space-between',
   },
 });

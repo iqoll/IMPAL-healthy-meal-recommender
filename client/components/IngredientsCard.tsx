@@ -1,6 +1,8 @@
 // components/IngredientsCard.tsx
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Text } from '@/shared/AppText';
+import { fonts, shadows } from '@/styles/global';
 
 interface IngredientsCardProps {
   onPress?: () => void;
@@ -38,11 +40,7 @@ const styles = StyleSheet.create({
     padding: 24,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#0F172A',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.04,
-    shadowRadius: 12,
-    elevation: 2,
+    ...shadows.card,
   },
   iconBox: {
     width: 48,
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontFamily: fonts.bold,
     color: '#F65E01',          // Warna teks oranye utama
     marginBottom: 6,
     textAlign: 'center',
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
   },
   quickLogText: {
     fontSize: 13,
-    fontWeight: '600',
+    fontFamily: fonts.semiBold,
     color: '#F65E01',          // Warna teks oranye
   },
 });

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { SCREEN_PADDING } from '@/constants/layout';
 
 // Diperbarui berdasarkan token warna dan desain Warm Kinetic Health
 export const colors = {
@@ -24,11 +25,22 @@ export const colors = {
 };
 
 // Nama family sesuai yang didaftarkan di app/_layout.tsx (useFonts)
+// Pakai fontFamily ini, bukan fontWeight — fontWeight + font custom bisa tampil beda di Android.
 export const fonts = {
   regular: 'Jakarta-Regular',
+  medium: 'Jakarta-Medium',
   semiBold: 'Jakarta-SemiBold',
   bold: 'Jakarta-Bold',
   extraBold: 'Jakarta-ExtraBold',
+};
+
+// boxShadow tampil sama di iOS & Android (shadow* hanya iOS, elevation hanya Android)
+export const shadows = {
+  sm: { boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)' },
+  card: { boxShadow: '0px 4px 12px rgba(15, 23, 42, 0.04)' },
+  md: { boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.15)' },
+  lg: { boxShadow: '0px 6px 12px rgba(0, 0, 0, 0.12)' },
+  tabBar: { boxShadow: '0px 10px 15px rgba(8, 99, 23, 0.2)' },
 };
 
 export const globalStyles = StyleSheet.create({
@@ -36,17 +48,17 @@ export const globalStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     paddingTop: 0,
-    paddingHorizontal: 20,    // Mengikuti standard margin-mobile (20px)[cite: 7]
+    paddingHorizontal: SCREEN_PADDING, // Mengikuti standard margin-mobile (20px)[cite: 7]
   },
   title: {
     fontSize: 36,
-    fontWeight: '900',        // Sesuai token display-hero-mobile[cite: 7]
+    fontFamily: fonts.extraBold, // Sesuai token display-hero-mobile[cite: 7]
     color: colors.text,
     letterSpacing: -0.03,
   },
   sectionTitle: {
     fontSize: 14,
-    fontWeight: '700',        // Sesuai token label-md dengan tracking uppercase[cite: 7]
+    fontFamily: fonts.bold,   // Sesuai token label-md dengan tracking uppercase[cite: 7]
     color: colors.textSecondary,
     marginTop: 24,
     marginBottom: 12,

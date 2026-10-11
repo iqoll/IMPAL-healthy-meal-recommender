@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Text } from '@/shared/AppText';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, fonts } from '@/styles/global';
 import { ChatMessage } from '@/types/chat';

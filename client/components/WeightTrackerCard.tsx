@@ -1,6 +1,8 @@
 // components/WeightTrackerCard.tsx
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Text } from '@/shared/AppText';
+import { fonts, shadows } from '@/styles/global';
 
 interface WeightTrackerCardProps {
   weight?: string;
@@ -40,11 +42,7 @@ const styles = StyleSheet.create({
     padding: 24,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#0F172A',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.04,
-    shadowRadius: 12,
-    elevation: 2,
+    ...shadows.card,
   },
   weightRow: {
     flexDirection: 'row',
@@ -53,18 +51,18 @@ const styles = StyleSheet.create({
   },
   weightValue: {
     fontSize: 38,
-    fontWeight: '800',
+    fontFamily: fonts.extraBold,
     color: '#F65E01',          // Warna oranye utama
   },
   unitText: {
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: fonts.bold,
     color: '#F65E01',
     marginLeft: 2,
   },
   cardTitle: {
     fontSize: 16,
-    fontWeight: '600',
+    fontFamily: fonts.semiBold,
     color: '#F65E01',          // Warna oranye utama
     marginBottom: 14,
   },
@@ -78,7 +76,7 @@ const styles = StyleSheet.create({
   },
   updateText: {
     fontSize: 12,
-    fontWeight: '600',
+    fontFamily: fonts.semiBold,
     color: '#F65E01',          // Warna oranye utama
   },
 });

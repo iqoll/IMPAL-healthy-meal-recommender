@@ -1,5 +1,6 @@
 import { globalStyles } from "@/styles/global";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { Text } from "@/shared/AppText";
 
 export default function CalendarScreen() {
     return (

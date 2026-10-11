@@ -5,14 +5,16 @@ import GreetingSection from '@/components/GreetingSection';
 import IngredientsCard from '@/components/IngredientsCard';
 import WeightTrackerCard from '@/components/WeightTrackerCard';
 import MyTargetCard from '@/components/MyTargetCard';
+import { useTabBarSpace } from '@/hooks/useTabBarSpace';
 
 export default function HomeScreen() {
   const router = useRouter();
+  const tabBarSpace = useTabBarSpace();
 
   return (
-    <ScrollView 
+    <ScrollView
       style={globalStyles.container}
-      contentContainerStyle={styles.scrollContent}
+      contentContainerStyle={{ paddingBottom: tabBarSpace }} // Konten paling bawah tidak tertutup tab bar
       showsVerticalScrollIndicator={false}
     >
       <GreetingSection userName='Jane Doe'/>
@@ -33,9 +35,6 @@ export default function HomeScreen() {
 
 
 const styles = StyleSheet.create({
-  scrollContent: {
-    paddingBottom: 32,
-  },
   quickActionContainer: {
     flexDirection: 'row',
     gap: 12,           // Memberikan jarak antar kedua kartu
