@@ -14,7 +14,7 @@ export default function HomeScreen() {
       contentContainerStyle={styles.scrollContent}
       showsVerticalScrollIndicator={false}
     >
-      <GreetingSection userName='Dexter Morgan'/>
+      <GreetingSection userName='Jane Doe'/>
       
       <View style={styles.quickActionContainer}>
         <IngredientsCard 
