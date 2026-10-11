@@ -1,6 +1,6 @@
+// components/IngredientsCard.tsx
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '@/styles/global';
 
 interface IngredientsCardProps {
   onPress?: () => void;
@@ -14,17 +14,17 @@ export default function IngredientsCard({ onPress, onQuickLogPress }: Ingredient
       onPress={onPress}
       activeOpacity={0.8}
     >
-      {/* Kotak Ikon Plus */}
+      {/* Kotak Lingkaran Ikon Plus */}
       <View style={styles.iconBox}>
-        <Ionicons name="add" size={24} color={colors.text} />
+        <Ionicons name="add" size={26} color="#F65E01" />
       </View>
 
       {/* Judul Kartu */}
-      <Text style={styles.cardTitle}>food ingredients</Text>
+      <Text style={styles.cardTitle}>Food ingredients</Text>
 
-      {/* Tombol Tautan Quick Log */}
-      <TouchableOpacity onPress={onQuickLogPress} activeOpacity={0.7}>
-        <Text style={styles.quickLogText}>+ Quick log</Text>
+      {/* Tautan Quick Log */}
+      <TouchableOpacity onPress={onQuickLogPress} activeOpacity={0.7} style={styles.quickLogButton}>
+        <Text style={styles.quickLogText}>Quick Log</Text>
       </TouchableOpacity>
     </TouchableOpacity>
   );
@@ -33,40 +33,40 @@ export default function IngredientsCard({ onPress, onQuickLogPress }: Ingredient
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 20, // Sesuai token rounded-xl
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    backgroundColor: '#FEFEDF', // Background warna kuning lembut sesuai referensi
+    borderRadius: 28,          // Sudut melengkung halus khas Warm Kinetic Health
+    padding: 24,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#0F172A',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.04,
+    shadowRadius: 12,
     elevation: 2,
   },
   iconBox: {
-    width: 56,
-    height: 56,
-    borderRadius: 16,
-    backgroundColor: '#F8FAF6', // Porcelain tint
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    borderWidth: 2,
+    borderColor: '#F65E01',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 16,
+    marginBottom: 14,
   },
   cardTitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#131b2e',
-    marginBottom: 8,
+    fontWeight: '700',
+    color: '#F65E01',          // Warna teks oranye utama
+    marginBottom: 6,
     textAlign: 'center',
   },
+  quickLogButton: {
+    marginTop: 2,
+  },
   quickLogText: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '600',
-    color: '#16A34A', // Botanical green
+    color: '#F65E01',          // Warna teks oranye
   },
 });

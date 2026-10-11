@@ -1,5 +1,6 @@
+// components/WeightTrackerCard.tsx
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 interface WeightTrackerCardProps {
   weight?: string;
@@ -13,18 +14,19 @@ export default function WeightTrackerCard({ weight = '0.0', onPress }: WeightTra
       onPress={onPress}
       activeOpacity={0.8}
     >
-      {/* Nilai Berat Badan */}
-      <Text style={styles.weightValue}>
-        {weight}<Text style={styles.unitText}>kg</Text>
-      </Text>
+      {/* Nilai Berat Badan & Satuan */}
+      <View style={styles.weightRow}>
+        <Text style={styles.weightValue}>{weight}</Text>
+        <Text style={styles.unitText}>kg</Text>
+      </View>
 
       {/* Judul Kartu */}
       <Text style={styles.cardTitle}>weight</Text>
       
-      {/* Tombol/Indikator Tap to Update */}
+      {/* Indikator Tap to Update dengan Ikon Pensil */}
       <View style={styles.updateContainer}>
-        <MaterialCommunityIcons name="scale" size={14} color="#64748B" style={styles.updateIcon} />
-        <Text style={styles.updateText}>Tap to update</Text>
+        <Ionicons name="create-outline" size={14} color="#F65E01" style={styles.updateIcon} />
+        <Text style={styles.updateText}>tap to update</Text>
       </View>
     </TouchableOpacity>
   );
@@ -33,52 +35,50 @@ export default function WeightTrackerCard({ weight = '0.0', onPress }: WeightTra
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 20,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    backgroundColor: '#FEFEDF', // Background kuning lembut
+    borderRadius: 28,          // Sudut melengkung halus
+    padding: 24,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#0F172A',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.04,
+    shadowRadius: 12,
     elevation: 2,
   },
-  weightValue: {
-    fontSize: 36,
-    fontWeight: '700',
-    color: '#131b2e',
+  weightRow: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
     marginBottom: 2,
+  },
+  weightValue: {
+    fontSize: 38,
+    fontWeight: '800',
+    color: '#F65E01',          // Warna oranye utama
   },
   unitText: {
     fontSize: 20,
-    fontWeight: '600',
-    color: '#131b2e',
+    fontWeight: '700',
+    color: '#F65E01',
+    marginLeft: 2,
   },
   cardTitle: {
     fontSize: 16,
-    fontWeight: '500',
-    color: '#64748B',
-    marginBottom: 16,
+    fontWeight: '600',
+    color: '#F65E01',          // Warna oranye utama
+    marginBottom: 14,
   },
   updateContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAF6',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 9999, // Pill shape
-    borderWidth: 1,
-    borderColor: '#E2E8F0',
+    marginTop: 2,
   },
   updateIcon: {
     marginRight: 4,
   },
   updateText: {
     fontSize: 12,
-    fontWeight: '500',
-    color: '#64748B',
+    fontWeight: '600',
+    color: '#F65E01',          // Warna oranye utama
   },
 });
