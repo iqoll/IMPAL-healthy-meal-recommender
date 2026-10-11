@@ -1,6 +1,6 @@
 // components/CustomTabBarButton.tsx
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, GestureResponderEvent } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, GestureResponderEvent } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 interface CustomTabBarButtonProps {
@@ -15,9 +15,9 @@ export default function CustomTabBarButton({ onPress }: CustomTabBarButtonProps)
       onPress={onPress}
       style={styles.container}
     >
-      <View style={styles.button}>
-        <Ionicons name="chatbubble-outline" size={24} color="#000" />
-      </View>
+      {/* Ikon Sparkle Kuning khas AI */}
+      <Ionicons name="sparkles" size={22} color="#FFC800" />
+      <Text style={styles.label}>MASEHAI</Text>
     </TouchableOpacity>
   );
 }
@@ -27,21 +27,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 2,
   },
-  button: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: '#E5E5E5',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 25, // Efek melayang ke atas
-    borderWidth: 1,
-    borderColor: '#333333',
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+  label: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: '#FFFFFF',
+    marginTop: 3,
   },
 });
