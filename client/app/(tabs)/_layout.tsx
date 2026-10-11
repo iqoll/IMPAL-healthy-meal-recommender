@@ -9,6 +9,7 @@ export default function TabLayout() {
 
   return (
     <Tabs
+      backBehavior="history" // Tombol back di chat kembali ke tab sebelumnya
       screenOptions={{
         headerShown: true,
         header: () => (
@@ -71,6 +72,7 @@ export default function TabLayout() {
         options={{
           title: '',
           headerShown: false,
+          tabBarStyle: { display: 'none' }, // Layar chat tampil penuh tanpa tab bar
           tabBarButton: (props) => <CustomTabBarButton {...props} />,
         }}
       />

@@ -13,6 +13,23 @@ export const colors = {
   textSecondary: '#5a4137',   // On-surface-variant untuk teks sekunder[cite: 7]
   alert: '#ba1a1a',           // Error / alert red[cite: 7]
   border: '#e3e3db',          // Surface variant / border line[cite: 7]
+  cream: '#FEFEDF',           // Latar lembut untuk kartu Home & area chat
+  muted: '#E8E8E8',           // Tombol sekunder abu-abu
+  // Warna per jenis nutrisi (kartu rekomendasi menu)
+  calories: '#1E9BE8',
+  protein: '#D21F1F',
+  fats: '#F2B705',
+  time: '#8DC63F',
+  success: '#6AA121',         // Teks progres target tercapai
+  successSoft: '#F1F7E8',     // Latar pill progres
+};
+
+// Nama family sesuai yang didaftarkan di app/_layout.tsx (useFonts)
+export const fonts = {
+  regular: 'Jakarta-Regular',
+  semiBold: 'Jakarta-SemiBold',
+  bold: 'Jakarta-Bold',
+  extraBold: 'Jakarta-ExtraBold',
 };
 
 export const globalStyles = StyleSheet.create({
