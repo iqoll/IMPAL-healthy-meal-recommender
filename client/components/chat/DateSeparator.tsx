@@ -1,4 +1,3 @@
-// components/chat/DateSeparator.tsx
 import { Text, StyleSheet } from 'react-native';
 import { colors, fonts } from '@/styles/global';
 

@@ -1,4 +1,3 @@
-// components/chat/ChatHeader.tsx
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';

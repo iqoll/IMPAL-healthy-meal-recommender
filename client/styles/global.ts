@@ -1,9 +1,8 @@
-// styles/global.ts
 import { StyleSheet } from 'react-native';
 
 // Diperbarui berdasarkan token warna dan desain Warm Kinetic Health
 export const colors = {
-  background: '#ffffff',      // Canvas root: warm ivory background
+  background: '#fbfaf2',      // Canvas root: warm ivory background
   header: '#ffffff',          // Pure surface white untuk card/header
   surface: '#ffffff',         // Surface container lowest / card surface
   primary: '#FF6418',         // Primary Brand Accent: energetic citrus orange[cite: 7]
