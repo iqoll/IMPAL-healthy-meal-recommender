@@ -4,6 +4,7 @@ import { globalStyles } from '@/styles/global';
 import GreetingSection from '@/components/GreetingSection';
 import IngredientsCard from '@/components/IngredientsCard';
 import WeightTrackerCard from '@/components/WeightTrackerCard';
+import MyTargetCard from '@/components/MyTargetCard';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -25,9 +26,11 @@ export default function HomeScreen() {
           onPress={() => router.push('/login')} // nanti diganti ke 
         />
       </View>
+      <MyTargetCard />
     </ScrollView>
   );
 }
+
 
 const styles = StyleSheet.create({
   scrollContent: {
