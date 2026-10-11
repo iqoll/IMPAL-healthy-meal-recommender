@@ -1,70 +1,68 @@
-import { colors } from "@/styles/global";
-import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from "expo-router";
+// app/(auth)/login.tsx
+import { useState } from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { colors } from '@/styles/global';
+import LoginHeader from '@/components/LoginHeader';
+import LoginForm from '@/components/LoginForm';
+import LoginFooter from '@/components/LoginFooter';
 
 export default function LoginScreen() {
-    const router = useRouter();
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
-    const goToHome = () => {
-        router.push('/(tabs)');
-    }
-    return (
-       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}> 
-            <View style={styles.logoContainer}>
-                <View style={styles.logoBox}>
-                    <Ionicons name="leaf" size={28} color="#FFFFFF" />
-                </View>
-            </View>
-            <View>
-                <Text style={styles.title}>Login</Text>
-                <Text style={styles.subtitle}>
-                    Welcome back to NutriAI! Track your daily nutrition and meal goals.
-                </Text>
-                <Button title="Login" onPress={goToHome} />
-            </View>
-        </ScrollView>
-    );
+  const handleLogin = () => {
+    console.log('Login dengan:', email, password);
+    router.replace('/(tabs)');
+  };
+
+  return (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <LoginHeader />
+        
+        <LoginForm
+          email={email}
+          setEmail={setEmail}
+          password={password}
+          setPassword={setPassword}
+          showPassword={showPassword}
+          setShowPassword={setShowPassword}
+          onForgotPassword={() => console.log('Forgot password clicked')}
+        />
+        
+        <LoginFooter
+          onLoginPress={handleLogin}
+          onSignUpPress={() => router.push('/login')}
+        />
+      </ScrollView>
+    </KeyboardAvoidingView>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  scrollContainer: {
     flexGrow: 1,
-    backgroundColor: '#FAFBFF',
     paddingHorizontal: 24,
     paddingTop: 60,
     paddingBottom: 40,
-    alignItems: 'center',
-    },
-    logoContainer: {
-    marginBottom: 20,
+    justifyContent: 'space-between',
   },
-  logoBox: {
-    width: 64,
-    height: 64,
-    borderRadius: 20,
-    backgroundColor: '#006B2C', // Botanical Green
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#006B2C',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 4,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: colors.text,
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#64748B',
-    textAlign: 'center',
-    paddingHorizontal: 20,
-    marginBottom: 28,
-    lineHeight: 20,
-  },
-})
+});
