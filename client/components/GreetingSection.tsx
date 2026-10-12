@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   greetingTitle: {
-    fontFamily: fonts.regular,
+    fontFamily: fonts.semiBold,
     fontSize: 28,
     color: colors.text,
     lineHeight: 36,
@@ -42,10 +42,11 @@ const styles = StyleSheet.create({
   },
   nameText: {
     color: colors.text,
+    fontFamily: fonts.semiBold,
   },
   quotes: {
     fontSize: 16,
-    fontFamily: fonts.semiBold,
+    fontFamily: fonts.regular,
     color: colors.text,
   },
 });

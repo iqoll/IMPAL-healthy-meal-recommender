@@ -81,8 +81,6 @@ export default function MyTargetCard() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    backgroundColor: '#FFFFFF',
     width: '100%',
   },
   header: {
