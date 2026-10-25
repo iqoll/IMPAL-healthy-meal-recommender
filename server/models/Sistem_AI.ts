@@ -1,10 +1,7 @@
 //Muhammad Fathan Yusrizal 1304221036
 // Interface tambahan sebagai representasi tipe data MenuMakanan
-export interface MenuMakanan {
-  id: string;
-  nama: string;
-  kalori: number;
-}
+
+import { Menu_Makanan } from "./Menu_Makanan";
 
 export class Sistem_AI {
   // Atribut berdasarkan class diagram
@@ -25,27 +22,28 @@ export class Sistem_AI {
     return "Contoh teks balasan dari AI";
   }
 
-  public rekomenMenu(query: string): MenuMakanan[] {
+  public rekomenMenu(query: string): Menu_Makanan[] {
     // Logika untuk merekomendasikan daftar menu berdasarkan query
     return [];
   }
 
-  public generateMenu(): MenuMakanan {
-    // Logika untuk membuat/menghasilkan satu menu baru
-    return {
-      id: "M001",
-      nama: "Grilled Lemon Herb Chicken & Avocado Bowl",
-      kalori: 480
-    };
+public generateMenu(): Menu_Makanan {
+    return new Menu_Makanan(
+      'MENU-001',
+      'Tumis Dada Ayam Brokoli',
+      450,
+      42,
+      12,
+      40,
+      'Makan Siang',
+      '12:30',
+      ['Tinggi Protein', ' Sehat'],
+      []
+    );
   }
 
-  public searchMenu(): MenuMakanan {
-    // Logika untuk mencari menu tertentu
-    return {
-      id: "M002",
-      nama: "Hasil Pencarian Menu",
-      kalori: 300
-    };
+  public searchMenu(): Menu_Makanan {
+    return this.generateMenu();
   }
 
   public loadKonteksData(userId: string): void {
