@@ -4,10 +4,11 @@ import { shadows } from '@/styles/global';
 
 interface LoginFooterProps {
   onLoginPress: () => void;
+  isLoading: boolean;
   onSignUpPress: () => void;
 }
 
-export default function LoginFooter({ onLoginPress, onSignUpPress }: LoginFooterProps) {
+export default function LoginFooter({ onLoginPress, isLoading, onSignUpPress }: LoginFooterProps) {
   return (
     <View style={styles.footerContainer}>
       <TouchableOpacity

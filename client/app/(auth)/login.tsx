@@ -4,9 +4,11 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
+  Alert
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Constants from 'expo-constants';
 import { colors } from '@/styles/global';
 import LoginHeader from '@/components/LoginHeader';
 import LoginForm from '@/components/LoginForm';
@@ -18,10 +20,44 @@ export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = () => {
-    console.log('Login dengan:', email, password);
-    router.replace('/(tabs)');
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert('Peringatan', 'Email dan password tidak boleh kosong');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      // Ambil IP host komputer secara otomatis dari Metro bundler jika berjalan via Expo Go / device fisik
+      const debuggerHost = Constants.expoConfig?.hostUri;
+      const hostIp = debuggerHost ? debuggerHost.split(':')[0] : '192.168.100.13';
+      const API_URL = `http://${hostIp}:5000/api/auth/login`;
+      
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      
+      const result = await response.json();
+      
+      if (response.ok) {
+        // Jika sukses, tampilkan pesan dan arahkan ke halaman utama
+        const userName = result.user?.nama || result.data?.nama || 'Pengguna';
+        Alert.alert('Sukses', `Selamat datang, ${userName}!`);
+        router.replace('/(tabs)');
+      } else {
+        // Jika password salah atau email tidak ditemukan
+        Alert.alert('Gagal Login', result.message || 'Email atau password salah');
+      }
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error', 'Gagal terhubung ke server. Pastikan backend aktif.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -30,7 +66,6 @@ export default function LoginScreen() {
       <ScrollView
         contentContainerStyle={[
           styles.scrollContainer,
-          // Jarak atas/bawah menyesuaikan notch, dynamic island, dan navigasi bawah tiap device
           { paddingTop: insets.top + 24, paddingBottom: insets.bottom + 24 },
         ]}
         showsVerticalScrollIndicator={false}
@@ -45,12 +80,13 @@ export default function LoginScreen() {
           setPassword={setPassword}
           showPassword={showPassword}
           setShowPassword={setShowPassword}
-          onForgotPassword={() => console.log('Forgot password clicked')}
+          onForgotPassword={() => Alert.alert('Info', 'Fitur lupa password belum tersedia')}
         />
         
         <LoginFooter
           onLoginPress={handleLogin}
-          onSignUpPress={() => router.push('/login')}
+          isLoading={isLoading}
+          onSignUpPress={() => router.push('/(auth)/login')}
         />
       </ScrollView>
     </KeyboardAvoidingView>
