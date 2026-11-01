@@ -33,7 +33,7 @@ export default function LoginScreen() {
       // Ambil IP host komputer secara otomatis dari Metro bundler jika berjalan via Expo Go / device fisik
       const debuggerHost = Constants.expoConfig?.hostUri;
       const hostIp = debuggerHost ? debuggerHost.split(':')[0] : '192.168.100.13';
-      const API_URL = `http://${hostIp}:5000/api/auth/login`;
+      const API_URL = `http://${hostIp}:3000/api/auth/login`;
       
       const response = await fetch(API_URL, {
         method: 'POST',

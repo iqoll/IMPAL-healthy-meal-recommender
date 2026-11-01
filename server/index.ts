@@ -15,7 +15,7 @@ import './database/connection';
 import authRouter from './routes/auth';
 
 const app = express();
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = Number(process.env.PORT) || 3000;
 
 // ============================================================
 // Middleware global
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ============================================================
 // Health-check endpoint (berguna untuk pengujian cepat)
-// GET http://localhost:5000/health
+// GET http://localhost:3000/health
 // ============================================================
 app.get('/health', (_req, res) => {
   res.json({
