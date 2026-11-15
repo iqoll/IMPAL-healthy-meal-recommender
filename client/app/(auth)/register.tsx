@@ -13,7 +13,9 @@ import Constants from 'expo-constants';
 import { colors } from '@/styles/global';
 import RegisterHeader from '@/components/RegisterHeader';
 import RegisterForm from '@/components/RegisterForm';
+import type { FormErrors } from '@/components/RegisterForm';
 import RegisterFooter from '@/components/RegisterFooter';
+import { validateRegisterForm } from '@/utils/validation';
 
 export default function RegisterScreen() {
   const router = useRouter();
@@ -28,29 +30,30 @@ export default function RegisterScreen() {
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  // State untuk menampung pesan error inline per field
+  const [errors, setErrors] = useState<FormErrors>({
+    nama: '',
+    email: '',
+    password: '',
+    repeatPassword: '',
+  });
+
   const handleRegister = async () => {
-    // 1. Validasi input tidak boleh kosong
-    if (!nama.trim() || !email.trim() || !password || !repeatPassword) {
-      Alert.alert('Peringatan', 'Semua kolom wajib diisi');
-      return;
-    }
+    // ============================================================
+    // Validasi input menggunakan RegEx dari utils/validation.ts
+    // ============================================================
+    const validation = validateRegisterForm(nama, email, password, repeatPassword);
 
-    // 2. Validasi format email sederhana
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.trim())) {
-      Alert.alert('Peringatan', 'Format email tidak valid');
-      return;
-    }
+    // Set error messages untuk setiap field (kosong jika valid)
+    setErrors({
+      nama: validation.nama.message,
+      email: validation.email.message,
+      password: validation.password.message,
+      repeatPassword: validation.repeatPassword.message,
+    });
 
-    // 3. Validasi panjang password
-    if (password.length < 6) {
-      Alert.alert('Peringatan', 'Password minimal 6 karakter');
-      return;
-    }
-
-    // 4. Validasi kecocokan password dan repeat password
-    if (password !== repeatPassword) {
-      Alert.alert('Peringatan', 'Password dan ulangi password tidak cocok');
+    // Hentikan proses jika ada field yang tidak lolos validasi
+    if (!validation.isAllValid) {
       return;
     }
 
@@ -123,6 +126,7 @@ export default function RegisterScreen() {
           setShowPassword={setShowPassword}
           showRepeatPassword={showRepeatPassword}
           setShowRepeatPassword={setShowRepeatPassword}
+          errors={errors}
         />
 
         <RegisterFooter

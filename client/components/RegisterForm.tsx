@@ -3,6 +3,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { Text, TextInput } from '@/shared/AppText';
 import { colors, fonts } from '@/styles/global';
 
+// Tipe untuk menampung pesan error per field (string kosong = tidak ada error)
+export interface FormErrors {
+  nama: string;
+  email: string;
+  password: string;
+  repeatPassword: string;
+}
+
 interface RegisterFormProps {
   nama: string;
   setNama: (text: string) => void;
@@ -16,6 +24,8 @@ interface RegisterFormProps {
   setShowPassword: (show: boolean) => void;
   showRepeatPassword: boolean;
   setShowRepeatPassword: (show: boolean) => void;
+  /** Pesan error inline dari hasil validasi RegEx (opsional, agar backward compatible) */
+  errors?: FormErrors;
 }
 
 export default function RegisterForm({
@@ -31,17 +41,23 @@ export default function RegisterForm({
   setShowPassword,
   showRepeatPassword,
   setShowRepeatPassword,
+  errors,
 }: RegisterFormProps) {
   return (
     <View style={styles.formContainer}>
       {/* Full Name Field */}
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Full Name</Text>
-        <View style={styles.inputWrapper}>
+        <View
+          style={[
+            styles.inputWrapper,
+            errors?.nama ? styles.inputWrapperError : null,
+          ]}
+        >
           <Ionicons
             name="person-outline"
             size={20}
-            color="#9CA3AF"
+            color={errors?.nama ? colors.alert : '#9CA3AF'}
             style={styles.inputIcon}
           />
           <TextInput
@@ -53,16 +69,24 @@ export default function RegisterForm({
             autoCapitalize="words"
           />
         </View>
+        {errors?.nama ? (
+          <Text style={styles.errorText}>{errors.nama}</Text>
+        ) : null}
       </View>
 
       {/* Email Field */}
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Email Address</Text>
-        <View style={styles.inputWrapper}>
+        <View
+          style={[
+            styles.inputWrapper,
+            errors?.email ? styles.inputWrapperError : null,
+          ]}
+        >
           <Ionicons
             name="mail-outline"
             size={20}
-            color="#9CA3AF"
+            color={errors?.email ? colors.alert : '#9CA3AF'}
             style={styles.inputIcon}
           />
           <TextInput
@@ -75,21 +99,29 @@ export default function RegisterForm({
             autoCapitalize="none"
           />
         </View>
+        {errors?.email ? (
+          <Text style={styles.errorText}>{errors.email}</Text>
+        ) : null}
       </View>
 
       {/* Password Field */}
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Password</Text>
-        <View style={styles.inputWrapper}>
+        <View
+          style={[
+            styles.inputWrapper,
+            errors?.password ? styles.inputWrapperError : null,
+          ]}
+        >
           <Ionicons
             name="lock-closed-outline"
             size={20}
-            color="#9CA3AF"
+            color={errors?.password ? colors.alert : '#9CA3AF'}
             style={styles.inputIcon}
           />
           <TextInput
             style={[styles.textInput, { flex: 1 }]}
-            placeholder="At least 6 characters"
+            placeholder="Min. 8 chars, A-Z, a-z, 0-9"
             placeholderTextColor="#A8A29E"
             secureTextEntry={!showPassword}
             value={password}
@@ -106,16 +138,24 @@ export default function RegisterForm({
             />
           </TouchableOpacity>
         </View>
+        {errors?.password ? (
+          <Text style={styles.errorText}>{errors.password}</Text>
+        ) : null}
       </View>
 
       {/* Repeat Password Field */}
       <View style={styles.inputGroup}>
         <Text style={styles.label}>Repeat Password</Text>
-        <View style={styles.inputWrapper}>
+        <View
+          style={[
+            styles.inputWrapper,
+            errors?.repeatPassword ? styles.inputWrapperError : null,
+          ]}
+        >
           <Ionicons
             name="shield-checkmark-outline"
             size={20}
-            color="#9CA3AF"
+            color={errors?.repeatPassword ? colors.alert : '#9CA3AF'}
             style={styles.inputIcon}
           />
           <TextInput
@@ -137,6 +177,9 @@ export default function RegisterForm({
             />
           </TouchableOpacity>
         </View>
+        {errors?.repeatPassword ? (
+          <Text style={styles.errorText}>{errors.repeatPassword}</Text>
+        ) : null}
       </View>
     </View>
   );
@@ -165,6 +208,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     height: 54,
   },
+  inputWrapperError: {
+    borderColor: colors.alert,
+  },
   inputIcon: {
     marginRight: 12,
   },
@@ -173,5 +219,12 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 15,
     color: colors.text,
+  },
+  errorText: {
+    fontFamily: fonts.regular,
+    fontSize: 12,
+    color: colors.alert,
+    marginTop: 4,
+    marginLeft: 4,
   },
 });

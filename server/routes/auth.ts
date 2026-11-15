@@ -1,5 +1,6 @@
 // server/routes/auth.ts
 // Route autentikasi: POST /api/auth/login & POST /api/auth/register
+// Validasi RegEx diterapkan di sisi server sebagai lapisan keamanan kedua
 
 import { Router, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
@@ -7,6 +8,15 @@ import jwt from 'jsonwebtoken';
 import pool from '../database/connection';
 
 const router = Router();
+
+// ============================================================
+// Pola RegEx (sama dengan yang ada di client/utils/validation.ts)
+// Diduplikasi di server agar validasi tetap berjalan meskipun
+// request dikirim langsung ke API tanpa melalui frontend.
+// ============================================================
+const NAMA_REGEX = /^[a-zA-Z\s]{3,50}$/;
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]{8,}$/;
 
 // ============================================================
 // POST /api/auth/register
@@ -19,6 +29,7 @@ router.post('/register', async (req: Request, res: Response) => {
     password: string;
   };
 
+  // 1. Validasi keberadaan field
   if (!nama || !email || !password) {
     return res.status(400).json({
       status: 'error',
@@ -26,11 +37,38 @@ router.post('/register', async (req: Request, res: Response) => {
     });
   }
 
+  // 2. Validasi nama dengan RegEx
+  const trimmedNama = nama.trim();
+  if (!NAMA_REGEX.test(trimmedNama)) {
+    return res.status(400).json({
+      status: 'error',
+      message: 'Nama hanya boleh huruf dan spasi, panjang 3–50 karakter.',
+    });
+  }
+
+  // 3. Validasi email dengan RegEx
+  const trimmedEmail = email.trim().toLowerCase();
+  if (!EMAIL_REGEX.test(trimmedEmail)) {
+    return res.status(400).json({
+      status: 'error',
+      message: 'Format email tidak valid.',
+    });
+  }
+
+  // 4. Validasi password dengan RegEx
+  if (!PASSWORD_REGEX.test(password)) {
+    return res.status(400).json({
+      status: 'error',
+      message:
+        'Password minimal 8 karakter, harus mengandung huruf besar, huruf kecil, dan angka.',
+    });
+  }
+
   try {
     // Cek apakah email sudah terdaftar
     const [rows] = await pool.query<any[]>(
       'SELECT id_pengguna FROM pengguna WHERE email = ?',
-      [email]
+      [trimmedEmail]
     );
     if (rows.length > 0) {
       return res.status(409).json({
@@ -45,7 +83,7 @@ router.post('/register', async (req: Request, res: Response) => {
     // Simpan pengguna baru
     await pool.query(
       'INSERT INTO pengguna (nama, email, password_hash) VALUES (?, ?, ?)',
-      [nama, email, passwordHash]
+      [trimmedNama, trimmedEmail, passwordHash]
     );
 
     return res.status(201).json({
