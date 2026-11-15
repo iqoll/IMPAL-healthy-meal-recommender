@@ -86,7 +86,7 @@ export default function LoginScreen() {
         <LoginFooter
           onLoginPress={handleLogin}
           isLoading={isLoading}
-          onSignUpPress={() => router.push('/(auth)/login')}
+          onSignUpPress={() => router.push('/(auth)/register')}
         />
       </ScrollView>
     </KeyboardAvoidingView>
